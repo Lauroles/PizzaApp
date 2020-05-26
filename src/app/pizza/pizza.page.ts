@@ -1,7 +1,7 @@
 /* tslint:disable:no-trailing-whitespace */
 import { Component, OnInit } from '@angular/core';
 import {PizzaService} from '../services/pizza.service';
-import {Pizza} from "../models/Pizza";
+import {Pizza} from '../models/Pizza';
 
 @Component({
   selector: 'app-pizza',

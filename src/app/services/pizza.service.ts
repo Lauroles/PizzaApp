@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
+import IPizza from '../models/iPizza';
 import {Pizza} from '../models/Pizza';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
@@ -17,7 +18,7 @@ export class PizzaService {
     }
 
     getPizzas(): Observable<Pizza> {
-      return this.http.get<Pizza[]>('https://api.ynov.jcatania.io/db')
+      return this.http.get<IPizza[]>('https://api.ynov.jcatania.io/db')
           .pipe(
               map(value => {
                 if (value.length > 0) {

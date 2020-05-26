@@ -4,17 +4,25 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PizzaPageRoutingModule } from './pizza-routing.module';
-
 import { PizzaPage } from './pizza.page';
+import {PizzaService} from '../services/pizza.service';
+import {HeaderComponent} from '../header/header.component';
+import {RouterModule} from '@angular/router'
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PizzaPageRoutingModule
+    RouterModule.forChild([
+      {
+        path: '',
+        component: PizzaPage
+      }
+    ])
   ],
-  declarations: [PizzaPage]
+  declarations: [PizzaPage, HeaderComponent],
+  providers: [PizzaService]
 })
 export class PizzaPageModule {}
