@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 
 import {LoginService} from './login.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import User from '../models/User';
+import Pizza from '../models/Pizza';
 
 describe('LoginService', () => {
 

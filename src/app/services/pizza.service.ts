@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
-import {Pizza} from "../models/Pizza";
-import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs/operators";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {Pizza} from '../models/Pizza';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -16,8 +16,8 @@ export class PizzaService {
 
     }
 
-    getPizzas(): Observable<Pizza[]> {
-      return this.http.get<Pizza[]>('https://jsonplaceholder.typicode.com/users?username=' + id)
+    getPizzas(): Observable<Pizza> {
+      return this.http.get<Pizza[]>('https://api.ynov.jcatania.io/db')
           .pipe(
               map(value => {
                 if (value.length > 0) {
@@ -26,7 +26,7 @@ export class PizzaService {
                   throw new Error ('Aucun utilisateur trouvé');
                 }
               }),
-              map(value => new User(value.id, value.name, value.email))
+              map(value => new Pizza(value.id, value.nom, value.photo, value.ingredients, value.prix))
           );
     }
 
