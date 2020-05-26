@@ -10,7 +10,7 @@ import {map} from 'rxjs/operators';
 export class PizzaService {
 
 
-    pizzaList: BehaviorSubject<Pizza[]> = new BehaviorSubject<Pizza[]>([]);
+    pizzaList: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([]);
 
     constructor(private http: HttpClient) {
 
@@ -23,12 +23,21 @@ export class PizzaService {
                 if (value.length > 0) {
                   return value[0];
                 } else {
-                  throw new Error ('Aucun utilisateur trouvé');
+                  throw new Error ('Aucune pizza trouvé');
                 }
               }),
               map(value => new Pizza(value.id, value.nom, value.photo, value.ingredients, value.prix))
           );
     }
 
-
+      addPizzaToCart(myNumb: number) {
+        const tmp = this.pizzaList.getValue();
+        tmp.push(myNumb);
+        this.pizzaList.next(this.pizzaList.getValue());
+      }
+      deletePizzaFromCart(myNumb: number) {
+        const index = this.pizzaList.getValue().indexOf(myNumb);
+        this.pizzaList.getValue().splice(index, 1);
+        this.pizzaList.next(this.pizzaList.getValue());
+      }
 }
