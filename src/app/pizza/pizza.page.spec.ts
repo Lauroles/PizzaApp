@@ -2,6 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { PizzaPage } from './pizza.page';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {PizzaService} from '../services/pizza.service';
+
 
 describe('PizzaPage', () => {
   let component: PizzaPage;
