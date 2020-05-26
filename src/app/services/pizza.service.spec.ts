@@ -1,54 +1,57 @@
 import {TestBed} from '@angular/core/testing';
 
-import {LoginService} from './login.service';
+import {PizzaService} from './pizza.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import Pizza from '../models/Pizza';
+import {Pizza} from '../models/Pizza';
 
-describe('LoginService', () => {
+
+describe('PizzaService', () => {
 
     let httpTestingController: HttpTestingController;
     const mockData = [
         {
-            id: '1',
-            name: 'Le nom de Bret',
-            username: 'Bret',
-            email: 'Sincere@april.biz'
+            photo: '89H323ENZJ0JI',
+            nom: 'Royale',
+            prix: '10',
+            id: '2',
+            ingredients: '[1,5,8]'
         }
     ];
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [LoginService]
+            providers: [PizzaService]
         });
 
         httpTestingController = TestBed.get(HttpTestingController);
     });
 
     it('should be created', () => {
-        const service: LoginService = TestBed.get(LoginService);
+        const service: PizzaService = TestBed.get(PizzaService);
         expect(service).toBeTruthy();
     });
 
     it('login', () => {
-        const service: LoginService = TestBed.get(LoginService);
-        const idTest = 'Plop';
-        let userReturned: User;
+        const service: PizzaService = TestBed.get(PizzaService);
+        let userReturned: Pizza;
 
-        service.login(idTest, 'replop')
+        service.getPizzas()
             .subscribe(user => {
                 userReturned = user;
             });
 
         // attente de la requete
-        const req = httpTestingController.expectOne('https://jsonplaceholder.typicode.com/users?username=' + idTest);
+        const req = httpTestingController.expectOne('https://api.ynov.jcatania.io/db');
         // reponse a la requete
         req.flush(mockData);
         // verification que toutes les requetes soient terminees
         httpTestingController.verify();
 
-        expect(userReturned.nom).toBe(mockData[0].name);
+        expect(userReturned.nom).toBe(mockData[0].nom);
         expect(userReturned.id).toBe(mockData[0].id);
-        expect(userReturned.email).toBe(mockData[0].email);
+        expect(userReturned.prix).toBe(mockData[0].prix);
+        expect(userReturned.ingredients).toBe(mockData[0].ingredients);
+        expect(userReturned.photo).toBe(mockData[0].photo);
     });
 });
