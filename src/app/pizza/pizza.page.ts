@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PizzaService} from '../services/pizza.service';
 import {Pizza} from '../models/Pizza';
+import IPizza from '../models/iPizza';
 
 @Component({
   selector: 'app-pizza',
@@ -10,16 +11,14 @@ import {Pizza} from '../models/Pizza';
 })
 export class PizzaPage implements OnInit {
 
-  panier: Pizza[];
+  panier: IPizza[];
 
   constructor(private pizzaService: PizzaService) {
-    this.pizzaService.getPizzas()
-        .subscribe(value => {
-          this.panier.push(value);
-        });
+
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.panier = await this.pizzaService.getPizzas().toPromise();
   }
 
   addPizza() {

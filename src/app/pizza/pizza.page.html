@@ -5,7 +5,14 @@
 </ion-header>
 
 <ion-content>
-<ul>
-  <li *ngFor="let item of panier">{{item.nom}}</li>
-</ul>
+    <ion-card *ngFor="let pizza of panier">
+        <img src="{{pizza.photo}}">
+        <ion-card-header>
+            <div class="title" routerLink="/pizzas/{{pizza.id}}">
+                <ion-card-subtitle>{{pizza.prix}} €</ion-card-subtitle>
+                <ion-card-title>{{pizza.nom}}</ion-card-title>
+            </div>
+            <!--<ion-icon name="add-circle" (click)="addPizza(pizza)" id="add"></ion-icon>-->
+        </ion-card-header>
+    </ion-card>
 </ion-content>

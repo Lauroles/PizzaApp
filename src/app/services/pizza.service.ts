@@ -17,17 +17,16 @@ export class PizzaService {
 
     }
 
-    getPizzas(): Observable<Pizza> {
-      return this.http.get<IPizza[]>('https://api.ynov.jcatania.io/db')
+    getPizzas(): Observable<IPizza[]> {
+      return this.http.get<IPizza[]>('https://api.ynov.jcatania.io/pizza')
           .pipe(
               map(value => {
                 if (value.length > 0) {
-                  return value[0];
+                  return value;
                 } else {
-                  throw new Error ('Aucune pizza trouvé');
+                  throw new Error ('Aucune pizza trouvée');
                 }
               }),
-              map(value => new Pizza(value.id, value.nom, value.photo, value.ingredients, value.prix))
           );
     }
 
