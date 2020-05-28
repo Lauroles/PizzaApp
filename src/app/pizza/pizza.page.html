@@ -8,7 +8,7 @@
     <ion-card *ngFor="let pizza of panier">
         <img src="{{pizza.photo}}">
         <ion-card-header>
-            <div class="title" routerLink="/pizzas/{{pizza.id}}">
+            <div class="title" routerLink="/ingredient/{{pizza.id}}">
                 <ion-card-subtitle>{{pizza.prix}} €</ion-card-subtitle>
                 <ion-card-title>{{pizza.nom}}</ion-card-title>
             </div>

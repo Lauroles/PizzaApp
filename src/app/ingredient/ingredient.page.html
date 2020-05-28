@@ -4,6 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content *ngIf="pizza">
+    <img src="{{pizza.photo}}">
+    <ion-card-header>
+        <div class="title" routerLink="/ingredient/{{pizza.id}}">
+            <ion-card-subtitle>{{pizza.prix}} €</ion-card-subtitle>
+            <ion-card-title>{{pizza.nom}}</ion-card-title>
+        </div>
+        <ion-icon name="add-circle" (click)="addPizza(pizza)" id="add"></ion-icon>
+    </ion-card-header>
+    <ion-list *ngIf="pizzaIngredients" id="ingredients">
+        <ion-item *ngFor="let item of pizzaIngredients">
+            <ion-label *ngIf="item">
+                {{item.nom}}
+            </ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>

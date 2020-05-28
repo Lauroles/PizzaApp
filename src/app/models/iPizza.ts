@@ -3,5 +3,5 @@ export default interface IPizza {
     nom: string;
     prix: string;
     id: string;
-    ingredients: string;
+    ingredients: number[];
 }

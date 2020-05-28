@@ -1,7 +1,11 @@
 /* tslint:disable:no-trailing-whitespace */
 import { Component, OnInit } from '@angular/core';
 import {IngredientService} from '../services/ingredient.service';
+import {PizzaService} from '../services/pizza.service';
 import IIngredient from '../models/iIngredient';
+import IPizza from '../models/iPizza';
+import {ActivatedRoute} from '@angular/router';
+import {Ingredient} from '../models/Ingredient';
 
 @Component({
   selector: 'app-ingredient',
@@ -10,13 +14,32 @@ import IIngredient from '../models/iIngredient';
 })
 export class IngredientPage implements OnInit {
 
-  panier: IIngredient[];
+  pizza: IPizza;
+  ingredients : IIngredient[];
+  id : number;
+  pizzaIngredients : IIngredient[];
 
-  constructor(private pizzaService: IngredientService) {
+  constructor(private pizzaService: PizzaService,  private route: ActivatedRoute, private ingredientService : IngredientService) {
 
   }
 
   async ngOnInit() {
-    this.panier = await this.pizzaService.getIngredient().toPromise();
+    this.route.params.subscribe((params) => {
+      this.id = params.id;
+    })
+    this.pizza = await this.pizzaService.getOne(this.id).toPromise();
+    this.ingredients = await this.ingredientService.getIngredient().toPromise();
+
+    if (this.pizza.ingredients && this.pizza.ingredients.length > 0){
+      this.pizzaIngredients = [];
+
+      for (const i of this.pizza.ingredients){
+        this.pizzaIngredients.push(this.ingredients.find(x => x.id === i))
+      }
+    }
+
+  }
+  addPizza(pizza: IPizza) {
+    this.pizzaService.addPizzaToCart(Math.floor(Math.random() * Math.floor(999)));
   }
 }

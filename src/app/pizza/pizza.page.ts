@@ -21,7 +21,7 @@ export class PizzaPage implements OnInit {
     this.panier = await this.pizzaService.getPizzas().toPromise();
   }
 
-  addPizza() {
+  addPizza(pizza: IPizza) {
     this.pizzaService.addPizzaToCart(Math.floor(Math.random() * Math.floor(999)));
   }
 

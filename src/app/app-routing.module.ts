@@ -9,10 +9,13 @@ const routes: Routes = [
   {
     path: 'pizza',
     loadChildren: () => import('./pizza/pizza.module').then( m => m.PizzaPageModule)
-  },  {
-    path: 'ingredient',
+  },
+  {
+    path: 'ingredient/:id',
     loadChildren: () => import('./ingredient/ingredient.module').then( m => m.IngredientPageModule)
-  }
+  },
+
+
 
 
 ];

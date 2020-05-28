@@ -3,10 +3,10 @@ export class Pizza{
     nom: string;
     prix: string;
     id: string;
-    ingredients: any;
+    ingredients: number[];
 
 
-    constructor(id: string, nom: string, prix: string, photo: string, ingredient: any) {
+    constructor(id: string, nom: string, prix: string, photo: string, ingredient: number[]) {
         this.id = id;
         this.nom = nom;
         this.prix = prix;
