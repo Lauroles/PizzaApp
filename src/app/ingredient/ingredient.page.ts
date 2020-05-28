@@ -5,7 +5,9 @@ import {PizzaService} from '../services/pizza.service';
 import IIngredient from '../models/iIngredient';
 import IPizza from '../models/iPizza';
 import {ActivatedRoute} from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import {Ingredient} from '../models/Ingredient';
+import {PanierComponent} from "../composent/panier/panier.component";
 
 @Component({
   selector: 'app-ingredient',
@@ -19,7 +21,7 @@ export class IngredientPage implements OnInit {
   id : number;
   pizzaIngredients : IIngredient[];
 
-  constructor(private pizzaService: PizzaService,  private route: ActivatedRoute, private ingredientService : IngredientService) {
+  constructor(private pizzaService: PizzaService,  private route: ActivatedRoute, private ingredientService : IngredientService, public modalController : ModalController) {
 
   }
 
@@ -42,4 +44,13 @@ export class IngredientPage implements OnInit {
   addPizza(pizza: IPizza) {
     this.pizzaService.addPizzaToCart(Math.floor(Math.random() * Math.floor(999)));
   }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PanierComponent,
+      swipeToClose: true,
+    });
+    return await modal.present();
+  }
 }
+
