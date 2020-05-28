@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title id="title">ingredient</ion-title>
-      <ion-icon name="cart-outline" (click)="presentModal()" id="panier"></ion-icon>
+    <ion-title id="title">Ingredient</ion-title>
+      <ion-icon name="cart-outline" (click)="presentModal()" id="panier" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
         </div>
         <ion-icon name="add-circle" (click)="addPizza(pizza)" id="add"></ion-icon>
     </ion-card-header>
-    <div>
+    <ion-card-content>
         <ion-list *ngIf="pizzaIngredients" id="ingredients">
             <ion-item *ngFor="let item of pizzaIngredients">
                 <ion-label *ngIf="item">
@@ -22,5 +22,5 @@
                 </ion-label>
             </ion-item>
         </ion-list>
-    </div>
+    </ion-card-content>
 </ion-content>

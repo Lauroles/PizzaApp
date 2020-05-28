@@ -1,16 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-title id="title">Panier</ion-title>
+    <ion-icon id="exit" name="close-outline" (click)="reload()" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>
-ezfze
 <ion-content>
-  {{ panier[0].pizza.nom }}
   <ion-item *ngFor="let item of panier">
-    po
     <ion-label *ngIf="item">
       {{item.pizza.nom}}
-      az
+      <div id="addorsupp">
+          <ion-icon name="remove-outline"  (click)="removePizza(item.pizza.id)"></ion-icon> {{item.quantite}} <ion-icon name="add-outline" (click)="addPizza(item.pizza.id)"></ion-icon><ion-icon name="trash-outline" (click)="deletePizza(item.pizza.id)"></ion-icon>
+      </div>
     </ion-label>
   </ion-item>
 </ion-content>
+
