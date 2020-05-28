@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title id="title">Pizza</ion-title>
-      <ioncard routerLink="/admin">Admin</ioncard>
+      <ioncard id="admin" slot="end" routerLink="/admin">Admin</ioncard>
       <ion-icon name="cart-outline" (click)="presentModal()" slot="end" id="panier"></ion-icon>
   </ion-toolbar>
 </ion-header>
