@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {PizzaService} from '../services/pizza.service';
 import {Pizza} from '../models/Pizza';
 import IPizza from '../models/iPizza';
-import {PanierComponent} from "../composent/panier/panier.component";
-import {ModalController} from "@ionic/angular";
+import {PanierComponent} from '../composent/panier/panier.component';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-pizza',
