@@ -7,7 +7,7 @@ import IPizza from '../models/iPizza';
 import {ActivatedRoute} from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import {Ingredient} from '../models/Ingredient';
-import {PanierComponent} from "../composent/panier/panier.component";
+import {PanierPage} from '../panier/panier.page';
 
 @Component({
   selector: 'app-ingredient',
@@ -47,7 +47,7 @@ export class IngredientPage implements OnInit {
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: PanierComponent,
+      component: PanierPage,
       swipeToClose: true,
     });
     return await modal.present();

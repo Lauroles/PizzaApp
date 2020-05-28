@@ -1,10 +1,10 @@
 /* tslint:disable:no-trailing-whitespace */
 import { Component, OnInit } from '@angular/core';
 import {PizzaService} from '../services/pizza.service';
-import {Pizza} from '../models/Pizza';
 import IPizza from '../models/iPizza';
-import {PanierComponent} from '../composent/panier/panier.component';
 import {ModalController} from '@ionic/angular';
+import IPanier from '../models/iPanier';
+import {PanierPage} from '../panier/panier.page';
 
 @Component({
   selector: 'app-pizza',
@@ -13,23 +13,35 @@ import {ModalController} from '@ionic/angular';
 })
 export class PizzaPage implements OnInit {
 
-  panier: IPizza[];
+  pizza: IPizza[];
 
   constructor(private pizzaService: PizzaService, public modalController : ModalController) {
 
   }
 
   async ngOnInit() {
-    this.panier = await this.pizzaService.getPizzas().toPromise();
+    this.pizza = await this.pizzaService.getPizzas().toPromise();
   }
 
-  addPizza(pizza: IPizza) {
-    this.pizzaService.addPizzaToCart(Math.floor(Math.random() * Math.floor(999)));
-  }
+  addPizza(id: number) {
+    let panier: IPanier[] = JSON.parse(localStorage.getItem('panier'));
+    if(!panier) {
+      panier = [];
+    }
+    const index = panier.findIndex( x => x.pizza.id === id);
+    if (index === -1) {
+      panier.push({ pizza: this.pizza.find( x => x.id === id), quantite: 1})
+    }
+    else{
+      panier[index].quantite++;
+      }
+      localStorage.setItem('panier', JSON.stringify(panier));
+        console.log(panier);
+    }
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: PanierComponent,
+      component: PanierPage,
       swipeToClose: true,
     });
     return await modal.present();

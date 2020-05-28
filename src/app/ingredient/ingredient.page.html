@@ -14,11 +14,13 @@
         </div>
         <ion-icon name="add-circle" (click)="addPizza(pizza)" id="add"></ion-icon>
     </ion-card-header>
-    <ion-list *ngIf="pizzaIngredients" id="ingredients">
-        <ion-item *ngFor="let item of pizzaIngredients">
-            <ion-label *ngIf="item">
-                {{item.nom}}
-            </ion-label>
-        </ion-item>
-    </ion-list>
+    <div>
+        <ion-list *ngIf="pizzaIngredients" id="ingredients">
+            <ion-item *ngFor="let item of pizzaIngredients">
+                <ion-label *ngIf="item">
+                    {{item.nom}}
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
 </ion-content>

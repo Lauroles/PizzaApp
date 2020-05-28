@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'ingredient/:id',
     loadChildren: () => import('./ingredient/ingredient.module').then( m => m.IngredientPageModule)
+  },  {
+    path: 'panier',
+    loadChildren: () => import('./panier/panier.module').then( m => m.PanierPageModule)
   },
+
 
 
 ];
