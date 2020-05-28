@@ -1,0 +1,25 @@
+ion-menu-button,
+#add,
+#cart {
+  color: var(--ion-color-primary);
+}
+
+img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.title {
+  float: left;
+}
+
+#add {
+  float: right;
+  font-size: xxx-large;
+}
+
+#cart {
+  margin-right: 3%;
+}
+

@@ -30,6 +30,20 @@ export class PizzaService {
           );
     }
 
+    getOne(id: number): Observable<IPizza> {
+        return this.http.get<IPizza>('https://api.ynov.jcatania.io/pizza' + '/' + id).pipe(
+            map(value => {
+                if (value) {
+                    return value;
+                }
+                else {
+                    throw new Error('Aucune pizza trouvée')
+                }
+
+            })
+        );
+    }
+
       addPizzaToCart(myNumb: number) {
         const tmp = this.pizzaList.getValue();
         tmp.push(myNumb);
