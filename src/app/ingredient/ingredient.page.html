@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-icon id="back" name="arrow-back-outline" routerLink="/pizza"  slot="start"></ion-icon>
     <ion-title id="title">Ingredient</ion-title>
       <ion-icon name="cart-outline" (click)="presentModal()" id="panier" slot="end"></ion-icon>
   </ion-toolbar>
@@ -12,7 +13,6 @@
             <ion-card-subtitle>{{pizza.prix}} €</ion-card-subtitle>
             <ion-card-title>{{pizza.nom}}</ion-card-title>
         </div>
-        <ion-icon name="add-circle" (click)="addPizza(pizza)" id="add"></ion-icon>
     </ion-card-header>
     <ion-card-content>
         <ion-list *ngIf="pizzaIngredients" id="ingredients">

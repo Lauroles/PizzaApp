@@ -47,7 +47,4 @@ export class PizzaPage implements OnInit {
     return await modal.present();
   }
 
-  rmPizza(numb: number) {
-    this.pizzaService.deletePizzaFromCart(numb);
-  }
 }

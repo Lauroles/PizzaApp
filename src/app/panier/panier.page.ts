@@ -64,6 +64,8 @@ export class PanierPage implements OnInit {
       }
     }
     localStorage.setItem('panier', JSON.stringify(panier));
+    location.reload();
+    this.presentModal();
   }
 
   deletePizza(id: number){

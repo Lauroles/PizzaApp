@@ -8,6 +8,8 @@ import {ActivatedRoute} from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import {Ingredient} from '../models/Ingredient';
 import {PanierPage} from '../panier/panier.page';
+import IPanier from '../models/iPanier';
+
 
 @Component({
   selector: 'app-ingredient',
@@ -21,6 +23,7 @@ export class IngredientPage implements OnInit {
   id : number;
   pizzaIngredients : IIngredient[];
 
+  // tslint:disable-next-line:max-line-length
   constructor(private pizzaService: PizzaService,  private route: ActivatedRoute, private ingredientService : IngredientService, public modalController : ModalController) {
 
   }
@@ -41,9 +44,7 @@ export class IngredientPage implements OnInit {
     }
 
   }
-  addPizza(pizza: IPizza) {
-    this.pizzaService.addPizzaToCart(Math.floor(Math.random() * Math.floor(999)));
-  }
+
 
   async presentModal() {
     const modal = await this.modalController.create({

@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ingredient</ion-title>
+    <ion-icon id="back" name="arrow-back-outline" routerLink="/admin"  slot="start"></ion-icon>
+    <ion-title>Ingredient</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let ingredient of ingredient">
+    <ion-card-header>
+        <ion-card-title>{{ingredient.nom}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
+

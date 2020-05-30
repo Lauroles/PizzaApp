@@ -1,4 +1,11 @@
+/* tslint:disable:no-trailing-whitespace */
 import { Component, OnInit } from '@angular/core';
+import {IngredientService} from '../../services/ingredient.service';
+import {PizzaService} from '../../services/pizza.service';
+import IIngredient from '../../models/iIngredient';
+import IPizza from '../../models/iPizza';
+import {ActivatedRoute} from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ingredient',
@@ -7,9 +14,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngredientPage implements OnInit {
 
-  constructor() { }
+  ingredient: IIngredient[];
 
-  ngOnInit() {
+  constructor(private ingredientService: IngredientService) {
+
   }
 
+  async ngOnInit() {
+    this.ingredient = await this.ingredientService.getIngredient().toPromise();
+  }
 }

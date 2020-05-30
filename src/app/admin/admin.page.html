@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>admin</ion-title>
+    <ion-icon id="back" name="arrow-back-outline" routerLink="/pizza"  slot="start"></ion-icon>
+    <ion-title>Admin</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div routerLink="/admin/pizza">
+    <ion-icon id="icons" name="pizza-outline" ></ion-icon> Liste des pizzas
+  </div>
+  <div  routerLink="/admin/ingredient">
+    <ion-icon id="icons" name="fast-food-outline" ></ion-icon> Liste des ingrédients
+  </div>
 </ion-content>

@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>pizza</ion-title>
+    <ion-icon id="back" name="arrow-back-outline" routerLink="/admin"  slot="start"></ion-icon>
+    <ion-title>Pizza</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let pizza of pizza">
+    <img src="{{pizza.photo}}">
+    <ion-card-header>
+      <div class="title" routerLink="/ingredient/{{pizza.id}}">
+        <ion-card-subtitle>{{pizza.prix}} €</ion-card-subtitle>
+        <ion-card-title>{{pizza.nom}}</ion-card-title>
+      </div>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
+
